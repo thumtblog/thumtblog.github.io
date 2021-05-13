@@ -1,7 +1,7 @@
 # Site settings
 title:       THUMT Research Blog
 email:       thumtblog@gmail.com
-author:      THUMT Research Blog
+author:      THUMT
 description: "Blog of Tsinghua Machine Translation Group"
 baseurl:     ""
 url:         "http://thumtblog.github.io"
