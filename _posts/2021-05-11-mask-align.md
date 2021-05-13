@@ -106,7 +106,7 @@ Also, the attention weights obtained by Mask-Align is more consistent with the w
 
 <!-- Bidirectional -->
 
-In the future, we plan to extend our method to directly generate symmetrized alignments without leveraging the agreement between two unidirectional models. For further disccusion, please contact: **Chi Chen** (*chenchi19@mails.tsinghua.edu.cn*).
+In the future, we plan to extend our method to directly generate symmetrized alignments without leveraging the agreement between two unidirectional models. For further discussion, please contact: **Chi Chen** (*chenchi19@mails.tsinghua.edu.cn*).
 
 ## References
 
