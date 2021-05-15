@@ -7,12 +7,12 @@ summary:    We propose Mask-Align, a self-supervised framework for neural word a
 
 The attention mechanism, which is now widely used in various AI tasks, was motivated by the need to align source words with target words in machine translation. In recent years, however, it has been found that the attention in NMT models does not match word alignments as expected, especially in Transformer models. This is because the NMT models compute the cross-attention between source and target with only part of the target context, which inevitably brings noisy alignments when the prediction is ambiguous. To get better word alignments, additional alignment labels are required to guide the training process.
 
-In our recent [paper](https://arxiv.org/pdf/2012.07162.pdf), we propose a self-supervised word alignment model called **Mask-Align**. Unlike NMT-based aligners, Mask-Align parallelly masks out each target token and recovers it conditioned on the source and other target tokens. This will take full advantage of bidirectional context on the target side, and reduce alignment errors caused by wrong predictions. 
+In our recent ACL 2021 [paper](https://arxiv.org/pdf/2012.07162.pdf), we propose a self-supervised word alignment model called **Mask-Align**. Unlike NMT-based aligners, Mask-Align parallelly masks out each target token and recovers it conditioned on the source and other target tokens. This will take full advantage of bidirectional context on the target side, and reduce alignment errors caused by wrong predictions. 
 
 Our model achieves state-of-the-art word alignment results on four language pairs, improving performance over GIZA++ by 1.7-6.5 AER points. You can find the code [here](https://github.com/THUNLP-MT/Mask-Align).
 
 
-## Problem of NMT-based Aligners
+## Problem with NMT-based Aligners
 
 <!-- 介绍 NMT-based Alignment 模型的问题 -->
 
