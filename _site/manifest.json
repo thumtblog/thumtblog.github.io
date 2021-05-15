@@ -1,0 +1,22 @@
+{
+  "short_name": "THUMT Research Blog",
+  "name": "THUMT Research Blog",
+  "description": "Blog of Tsinghua Machine Translation Group",
+  "icons": [
+    {
+      "src": "/splash-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ffffff"
+}
