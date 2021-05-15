@@ -9,7 +9,7 @@ layout: default
       {% for post in paginator.posts %}
         <div class="post py3">
           <p class="post-meta">
-            {{ post.author }} on
+            {{ post.author }},
 	    {% if site.date_format %}
 	      {{ post.date | date: site.date_format }}
 	    {% else %}
