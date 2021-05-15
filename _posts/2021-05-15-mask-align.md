@@ -1,6 +1,6 @@
 ---
 layout:     post
-author:     Chi Chen
+author:     "Chi Chen"
 title:      "Mask-Align: Self-Supervised Neural Word Alignment"
 date:       2021-05-15 12:00:00
 summary:    We propose Mask-Align, a self-supervised framework for neural word alignment, which outperforms several strong baselines by a large margin.
