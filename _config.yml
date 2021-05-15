@@ -2,7 +2,7 @@
 title:       THUMT Research Blog
 email:       thumtblog@gmail.com
 author:      THUMT
-description: "Blog of Tsinghua Machine Translation Group"
+description: "THUMT Research Blog"
 baseurl:     ""
 url:         "http://thumtblog.github.io"
 date_format: "%b %-d, %Y"
