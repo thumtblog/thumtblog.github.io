@@ -23,7 +23,9 @@ layout: default
               {{ post.excerpt }}
             {% endif %}
           </span>
+          <a href="{{ post.url | relative_url }}" class="post-link">(Read More)</a>
         </div>
+
       {% endfor %}
     </div>
 
