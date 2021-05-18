@@ -16,7 +16,8 @@ layout: default
 	      {{ post.date | date: "%b %-d, %Y" }}
 	    {% endif %}:
 	  </p>
-          <a href="{{ post.url | relative_url }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
+          <style> h1 { font-size: 220%; } </style>
+          <a href="{{ post.url | relative_url }}" class="post-link"><h1 class="h1 post-title">{{ post.title }}</h1></a>
           <span class="post-summary">
             {% if post.summary %}
               {{ post.summary }}
