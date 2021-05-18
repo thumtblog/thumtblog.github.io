@@ -7,11 +7,11 @@ layout: default
 {% assign minutes = 1 %}
 {% endif %}
 
-<style> h2 { font-size: 200%; } </style>
+<style> h1 { font-size: 190%; } </style>
 
 <div class="post-header mb2">
   
-  <h2>{{ page.title }}</h2>
+  <h1>{{ page.title }}</h1>
   <p style="text-align:center;"><span class="post-meta">{{ page.author }}</span> • <span class="post-meta">{{ page.date | date: site.date_format }} </span> • <span class="post-meta"> {{ minutes }} {{ site.text.post.minute_read | default: "minute read" }} </span></p>
   <!-- <span class="post-meta">{{ page.date | date: site.date_format }} </span> <br> -->
   {% if page.update_date %}
