@@ -70,7 +70,7 @@ $$
 
 However, the MRT loss can only provide a weak supervision signal, because when the denominator of $$Q(\mathbf{y}|\mathbf{x};\theta,\alpha)$$ becomes smaller, the loss can be rather low even if the value of $$P(\mathbf{y}|\mathbf{x};\theta)$$ is very small (see the table below).
 
-<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/abnormal.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/abnormal.png" width=400></div>
 
 This may decrease the probability of some good segmentation results, thereby reducing the performance of the segmentation model. Therefore, we modify the MRT loss by adding a regularization term to mitigate the impact of getting the denominator of $$Q(\mathbf{y}|\mathbf{x};\theta,\alpha)$$ smaller:
 
@@ -84,11 +84,11 @@ $$
 
 To investigate the quality of our segmentation model, we compare our approach with the previous SOTA methods on the 9 benchmark datasets of CWS. As shown in the table below, our proposed method obtains better results on different standard datasets with single criterion learning.
 
-<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/results_single.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/results_single.png" width=800></div>
 
 To analyze the robustness of our proposed method with respect to the revised MLM, we prepare noisy-labeled datasets which contain 90% real data and 10% randomly shuffled data. As shown in the table below, all the results are almost lower than the results from single criterion training. However, our proposed method still gains better results than SOTA baselines with noisy-labeled datasets rather than the standard labeled data.
 
-<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/results_noisy.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/results_noisy.png" width=800></div>
 
 More results can be also found in our paper.
 
