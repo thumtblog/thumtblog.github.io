@@ -38,7 +38,7 @@ In this work, we use a revised MLM similar to BERT [2] to evaluate the quality o
 
 An example of the masking strategy we introduce above is shown in the table below.
 
-<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/mask_strategy.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/cws-mask-predict/mask_strategy.png" width=400></div>
 
 When evaluating the quality of segmentation results, we first find all the legal masked sequences based on the segmentation result. Then, we use the revised MLM to evaluate the prediction quality of all masked words in these inputs. We take the average of all the quality scores as the quality of the segmentation result:
 
