@@ -16,7 +16,7 @@ In our recent EMNLP 2021 paper, we propose a self-supervised QE method to overco
 
 <div align="center"><img src="{{ site.url }}/images/self-supervised-qe/overview.gif" width=500></div>
 
-Based on this intuition, our method estimates the translation quality of the target words by checking whether they can be correctly recovered. Finally, we obtain the sentence-level quality score by summarizing the word-level predictions. Obviously, our method is not affected by the noise and is easier to train, since it involves no synthetic data. Experimental results show that our self-supervised method outperforms previous unsupervised methods. Our code can be found <https://github.com/THUNLP-MT/SelfSupervisedQE>.
+Based on this intuition, our method estimates the translation quality of the target words by checking whether they can be correctly recovered. Finally, we obtain the sentence-level quality score by summarizing the word-level predictions. Obviously, our method is not affected by the noise and is easier to train, since it involves no synthetic data. Experimental results show that our self-supervised method outperforms previous unsupervised methods. Our code can be found [here](https://github.com/THUNLP-MT/SelfSupervisedQE).
 
 ## Model Architecture
 
@@ -28,11 +28,11 @@ However, since the vocabulary of BERT is built with WordPiece [3], words in the 
 
 ## Training and Inference
 
-As shown in the figure below, our model is trained to recover the masked tokens in the target side of the authentic sentence pairs. Given a parallel corpus which consists of authentic sentence pairs, we divide each target sentence into the masked part and the observed part. We train the model to minimize the negative log-likelihood loss on the masked target tokens.
+Our model is trained to recover the masked tokens in the target side of the authentic sentence pairs. Given a parallel corpus which consists of authentic sentence pairs, we divide each target sentence into the masked part and the observed part. We train the model to minimize the negative log-likelihood loss on the masked target tokens. The following figure illustrates the training process.
 
 <div align="center"><img src="{{ site.url }}/images/self-supervised-qe/training.gif" width=500></div>
 
-As shown in the figure below, after the training process, we use the model to perform quality estimation by checking whether the masked target tokens can be successfully recovered. Specifically, for each masked token, we use the model to calculate the conditional probability of successful recovery. Obviously, the token is difficult to recover if the probability is low. In this case, we consider the token is erroneous. Otherwise, the token tends to be correct. Therefore, we regard the probability as the quality score of the token. If a threshold is given, we can map the score to a quality tag.
+After the training process, we use the model to perform quality estimation by checking whether the masked target tokens can be successfully recovered. Specifically, for each masked token, we use the model to calculate the conditional probability of successful recovery. Obviously, the token is difficult to recover if the probability is low. In this case, we consider the token is erroneous. Otherwise, the token tends to be correct. Therefore, we regard the probability as the quality score of the token. If a threshold is given, we can map the score to a quality tag, as shown in the following:
 
 <div align="center"><img src="{{ site.url }}/images/self-supervised-qe/inference.gif" width=500></div>
 
