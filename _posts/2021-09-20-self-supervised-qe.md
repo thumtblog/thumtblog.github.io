@@ -54,7 +54,7 @@ To further show the advantages of our method, we provide an example in the table
 
 ## Conclusion and Future Work
 
-We have presented a self-supervised method for quality estimation of machine-translated sentences. The central idea is to perform quality estimation by recovering masked target words using the surrounding context. Our method is easy to implement and is not affected by noisy synthetic data. Experimental results show that our method outperforms previous unsupervised QE methods. In the future, we plan to extend our self-supervised method to phrase- and document-level tasks. For further discussion, please contact: **Xuancheng Huang** (*zyh971025@126.com*).
+We have presented a self-supervised method for quality estimation of machine-translated sentences. The central idea is to perform quality estimation by recovering masked target words using the surrounding context. Our method is easy to implement and is not affected by noisy synthetic data. Experimental results show that our method outperforms previous unsupervised QE methods. In the future, we plan to extend our self-supervised method to phrase- and document-level tasks. For further discussion, please contact: **Yuanhang Zheng** (*zyh971025@126.com*).
 
 ## References
 
