@@ -60,7 +60,7 @@ $$
 \end{equation}
 $$
 
-where $$Q(\mathbf{y}|\mathbf{x};\theta,\alpha)$$ is a distribution defined on a subset $$S(\mathbf{x})$$ of the segmentation results:
+where $$Q(\mathbf{y}\|\mathbf{x};\theta,\alpha)$$ is a distribution defined on a subset $$S(\mathbf{x})$$ of the segmentation results:
 
 $$
 \begin{equation}
@@ -68,11 +68,11 @@ $$
 \end{equation}
 $$
 
-However, the MRT loss can only provide a weak supervision signal, because when the denominator of $$Q(\mathbf{y}|\mathbf{x};\theta,\alpha)$$ becomes smaller, the loss can be rather low even if the value of $$P(\mathbf{y}|\mathbf{x};\theta)$$ is very small (see the table below).
+However, the MRT loss can only provide a weak supervision signal, because when the denominator of $$Q(\mathbf{y}\|\mathbf{x};\theta,\alpha)$$ becomes smaller, the loss can be rather low even if the value of $$P(\mathbf{y}\|\mathbf{x};\theta)$$ is very small (see the table below).
 
 <div align="center"><img src="{{ site.url }}/images/cws-mask-predict/abnormal.png" width=400></div>
 
-This may decrease the probability of some good segmentation results, thereby reducing the performance of the segmentation model. Therefore, we modify the MRT loss by adding a regularization term to mitigate the impact of getting the denominator of $$Q(\mathbf{y}|\mathbf{x};\theta,\alpha)$$ smaller:
+This may decrease the probability of some good segmentation results, thereby reducing the performance of the segmentation model. Therefore, we modify the MRT loss by adding a regularization term to mitigate the impact of getting the denominator of $$Q(\mathbf{y}\|\mathbf{x};\theta,\alpha)$$ smaller:
 
 $$
 \begin{equation}
