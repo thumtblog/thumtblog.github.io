@@ -4,7 +4,7 @@ author:     "Chi Chen"
 title:      "Mask-Align: Self-Supervised Neural Word Alignment"
 date:       2021-05-15 12:00:00
 summary:    We propose Mask-Align, a self-supervised framework for neural word alignment, which outperforms several strong baselines by a large margin.
-image:      /images/mask-align/model.png
+image:      "/images/mask-align/model.png"
 ---
 
 Word alignment is an important task, and used to be a key component of statistical machine translation (SMT). Although word alignment is no longer explicitly modeled in neural machine translation (NMT), it still plays an important role in NMT model analysis, lexically constrained decoding and automatic post-editing.

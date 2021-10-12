@@ -4,7 +4,7 @@ author:     "Mieradilijiang Maimaiti"
 title:      "Segment, Mask, and Predict: Augmenting Chinese Word Segmentation with Self-Supervision"
 date:       2021-09-20 18:00:00
 summary:    We propose a self-supervised CWS approach with a straightforward and effective architecture, which outperforms previous methods on 9 different CWS datasets.
-image:      /images/cws-mask-predict/mask_strategy.png
+image:      "/images/cws-mask-predict/mask_strategy.png"
 ---
 
 ## Introduction

@@ -4,7 +4,7 @@ author:     "Yuanhang Zheng"
 title:      "Self-Supervised Quality Estimation for Machine Translation"
 date:       2021-09-20 12:00:00
 summary:    We propose a simple self-supervised method for quality estimation, which outperforms several previous unsupervised methods.
-image:      /images/self-supervised-qe/architecture.png
+image:      "/images/self-supervised-qe/architecture.png"
 ---
 
 ## Introduction
