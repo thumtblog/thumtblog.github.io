@@ -24,7 +24,7 @@ AM turns out to be closely related to multisecant quasi-Newton methods in nonlin
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/Figure_1.jpg" width=750></div>
 The figure shows the trajectories of using the Heavy-ball method, Adam, and AM to minimize a high-degree polynomial function of two variables. It is found that AM can arrive at the global minimum $$(3,0.5)$$ much faster than the other two optimizers.
 
-Although AM often performs well in practice, only local linear convergence of AM for fixed-point iterations has been proved, and there exists no version of AM that guarantees convergence for nonconvex optimization, let alone stochastic optimization. In this work, we introduce stochastic Anderson mixing to address these problems.
+Although AM performs well in practice, only local linear convergence of AM for fixed-point iterations has been proved, and there exists no version of AM that guarantees convergence for nonconvex optimization, let alone stochastic optimization. In this work, we introduce stochastic Anderson mixing to address these problems.
 
 ## Stochastic Anderson mixing
 
@@ -60,7 +60,7 @@ For training a simple convolutional neural network (CNN) on MNIST dataset with l
 We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the superiority of our method.
 
 ### PTB
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=600></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=500></div>
 We also applied our method to training a 3-layer LSTM on PTB. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
