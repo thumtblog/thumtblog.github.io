@@ -57,7 +57,7 @@ For training a simple convolutional neural network (CNN) on MNIST dataset with l
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=750></div>
 We trained ResNet, WideResNet, ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
 
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb1.png" width=750></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=750></div>
 We also applied our method to language model task. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
