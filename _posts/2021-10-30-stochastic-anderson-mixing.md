@@ -11,7 +11,7 @@ Stochastic optimization is important in various areas such as statistics, machin
 $$ \min_{x \in \mathbb{R}^d} f(x)=\mathbb{E}_{\xi}\left[ F(x;\xi) \right]  $$, where $$F: \mathbb{R}^d \times \Xi \rightarrow \mathbb{R}$$ is continuously differentiable and possibly nonconvex and the random variable $$\xi \in \Xi$$ may follow an unknown probability distribution.  It is assumed that only noisy information about the gradient of $$f$$ is available through calls to some *stochastic first-order oracle* ($$SFO$$). The sampled average is the empirical risk minimization:
 $$ \min_{x \in \mathbb{R}^d} f (x) = \frac{1}{T}\sum_{i=1}^{T}f_{\xi_i}(x) $$, where $$f_{\xi_i}: \mathbb{R}^d \rightarrow \mathbb{R}$$ is the loss function corresponding to the $$i$$-th data sample and $$T$$ denotes the number of data samples. $$T$$ can be extremely large such that it prohibits the computation of the full gradient $$\nabla f$$. 
 
-One classical method is the stochastic approximation (also known as stochastic gradient descent (SGD)) [1] , which uses the negative stochastic gradient as the searching direction. Many algorithms were developed to accelerate SGD, such as the adaptive learning rate methods including Adagrad [2] and Adam [3]. In practice, the choices of optimizers can vary for different applications and their practical performances are still unsatisfactory in terms of convergence rate or generalization ability. 
+One classical method is the stochastic approximation (also known as stochastic gradient descent (SGD)) [1] , which uses the negative stochastic gradient as the searching direction. Many algorithms were developed to accelerate SGD, such as the adaptive learning rate methods including Adagrad [2] and Adam [3]. In practice, the choices of optimizers can vary for different applications and their practical performances are still unsatisfactory in terms of convergence rate or generalization. 
 
 In our recent NeurIPS 2021 [paper](https://arxiv.org/abs/2110.01543), we develop a novel second-order method based on Anderson mixing (AM) [4]. Our
 analysis and experiments show the proposed method is competent from both theoretical and practical perspectives and performs well in training various neural networks in different tasks.
@@ -24,7 +24,7 @@ AM turns out to be closely related to multisecant quasi-Newton methods in nonlin
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/Figure_1.jpg" width=750></div>
 The figure shows the trajectories of using the Heavy-ball method, Adam, and AM to minimize a high-degree polynomial function of two variables. It is found that AM can arrive at the global minimum $$(3,0.5)$$ much faster than the other two optimizers.
 
-Although AM often performs well in practice, only local linear convergence of AM for fixed-point iterations has been proved, and there exists no version of AM that guarantees convergence for nonconvex optimization, let alone stochastic optimization.
+Although AM often performs well in practice, only local linear convergence of AM for fixed-point iterations has been proved, and there exists no version of AM that guarantees convergence for nonconvex optimization, let alone stochastic optimization. In this work, we introduce stochastic Anderson mixing to address these problems.
 
 ## Stochastic Anderson mixing
 
@@ -57,7 +57,7 @@ For training a simple convolutional neural network (CNN) on MNIST dataset with l
 
 ### CIFAR
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=900></div>
-We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
+We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the superiority of our method.
 
 ### PTB
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=600></div>
