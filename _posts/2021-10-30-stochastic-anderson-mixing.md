@@ -8,7 +8,7 @@ image:      "/images/stochastic-anderson-mixing/Figure_1.jpg"
 ---
 
 Stochastic optimization is important in various areas such as statistics, machine learning and power systems. The concerned problem can be formulated as
-$$ \min_{x \in \mathbb{R}^d} f(x)=\mathbb{E}_{\xi}\left[ F(x;\xi) \right]  $$, where $$F: \mathbb{R}^d \times \Xi \rightarrow \mathbb{R}$$ is continuously differentiable and possibly nonconvex and the random variable $$\xi \in \Xi$$ may follow an unknown probability distribution.  It is assumed that only noisy information about the gradient of $f$ is available through calls to some {\em stochastic first-order oracle} ($$\mathcal{SFO}$$). The sampled average is the empirical risk minimization:
+$$ \min_{x \in \mathbb{R}^d} f(x)=\mathbb{E}_{\xi}\left[ F(x;\xi) \right]  $$, where $$F: \mathbb{R}^d \times \Xi \rightarrow \mathbb{R}$$ is continuously differentiable and possibly nonconvex and the random variable $$\xi \in \Xi$$ may follow an unknown probability distribution.  It is assumed that only noisy information about the gradient of $$f$$ is available through calls to some *stochastic first-order oracle* ($$SFO$$). The sampled average is the empirical risk minimization:
 $$ \min_{x \in \mathbb{R}^d} f (x) = \frac{1}{T}\sum_{i=1}^{T}f_{\xi_i}(x) $$, where $$f_{\xi_i}: \mathbb{R}^d \rightarrow \mathbb{R}$$ is the loss function corresponding to the $$i$$-th data sample and $$T$$ denotes the number of data samples. $$T$$ can be extremely large such that it prohibits the computation of the full gradient $$\nabla f$$. 
 
 One classical method is the stochastic approximation (also known as stochastic gradient descent (SGD)) [1] , which uses the negative stochastic gradient as the searching direction. Many algorithms were developed to accelerate SGD, such as the adaptive learning rate methods including Adagrad [2] and Adam [3]. In practice, the choices of optimizers can vary for different applications and their practical performances are still unsatisfactory in terms of convergence rate or generalization ability. 
@@ -41,7 +41,7 @@ bound can be improved to $$O(1/\epsilon^{2})$$ when randomly choosing an iterate
 
 ## Enhancement of Anderson mixing
 
-We introduce the variance reduction and preconditioned mixing techniques to further enhance SAM.
+We introduce two techniques to further enhance SAM:
 
 (1) Variance reduction. By borrowing the stochastic variance reduced gradient technique, the iteration complexity of SAM is reduced to $$O(1/\epsilon)$$.
 
@@ -51,7 +51,7 @@ We introduce the variance reduction and preconditioned mixing techniques to furt
 
 We apply the new method and its enhanced version to train neural networks.
 
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.png" width=750></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.png" width=900></div>
 For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, out method (AdaSAM) can significantly accelerate first-order methods. The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge faster to an acceptable loss.
 
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=750></div>
