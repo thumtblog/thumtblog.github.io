@@ -57,11 +57,11 @@ For training a simple convolutional neural network (CNN) on MNIST dataset with l
 
 ### CIFAR
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=900></div>
-We trained ResNet, WideResNet, ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
+We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
 
 ### PTB
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=900></div>
-We also applied our method to training a 3-layer LSTM on the PTB language model task. The results show that our method (pAdaSAM) also outperforms other optimizers.
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=600></div>
+We also applied our method to training a 3-layer LSTM on PTB. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
 
