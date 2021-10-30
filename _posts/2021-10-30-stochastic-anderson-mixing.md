@@ -51,8 +51,12 @@ We introduce two techniques to further enhance SAM:
 We apply the new method and its enhanced version to train neural networks.
 
 ### MNIST
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.jpg" width=1000></div>
-For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, out method (AdaSAM) can significantly accelerate first-order methods. The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge faster to an acceptable loss.
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_1.png" width=450></div>
+For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, our method (AdaSAM) can significantly accelerate first-order methods. 
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_2.png" width=450></div>
+The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. 
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_3.png" width=450></div>
+The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge faster to an acceptable loss.
 
 ### CIFAR
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=900></div>
