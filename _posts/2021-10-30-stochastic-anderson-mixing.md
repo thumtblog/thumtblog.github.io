@@ -28,13 +28,13 @@ Although AM often performs well in practice, only local linear convergence of AM
 
 ## Stochastic Anderson mixing
 
-We first reformulate Anderson mixing as a two-step procedure: (i) Projection step. The historical iterations are used to interpolate an intermediate iterate by solving least squares problem. (ii) Mixing step. The current gradient is incorporated to the intermediate iterate. To obtain a global convergent version of AM, we introduce damped projection and adaptive regularization to the original AM. The resulting algorithm is the stochastic Anderson mixing (SAM).
+We first reformulate Anderson mixing as a two-step procedure: (i) Projection step. The historical iterations are used to interpolate an intermediate iterate by solving least squares problem. (ii) Mixing step. The current gradient is incorporated to the intermediate iterate. To obtain a global convergent version of AM, we introduce damped projection and adaptive regularization to the original AM:
 
 (1) Damped projection. Motivated by damped Newton's method, we introduce damping to stabilize the projection step.
 
 (2) Adaptive regularization. Since the stepsize calculated by the projection step may be too large that causes the intermediate iterate overshoot the trust region, we introduce an adaptive regularization term to the least-squares problem in the projection step.
 
-We also give a procedure to ensure the current searching direction is a descent direction.
+The resulting algorithm is the stochastic Anderson mixing (SAM). We also give a procedure to ensure the current searching direction is a descent direction.
 
 With these modification, we establish the convergence theory of SAM, including the almost sure convergence to stationary points and the worst-case iteration complexity. Moreover, the complexity
 bound can be improved to $$O(1/\epsilon^{2})$$ when randomly choosing an iterate as the output.
@@ -51,12 +51,15 @@ We introduce two techniques to further enhance SAM:
 
 We apply the new method and its enhanced version to train neural networks.
 
+### MNIST
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.png" width=900></div>
 For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, out method (AdaSAM) can significantly accelerate first-order methods. The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge faster to an acceptable loss.
 
+### CIFAR
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=750></div>
 We trained ResNet, WideResNet, ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
 
+### PTB
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=750></div>
 We also applied our method to language model task. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
