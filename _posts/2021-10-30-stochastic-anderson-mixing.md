@@ -34,10 +34,9 @@ We first reformulate Anderson mixing as a two-step procedure: (i) Projection ste
 
 (2) Adaptive regularization. The step size calculated by the projection step may be too large, which leads to the overshooting problem. We introduce an adaptive regularization term in the projection step as rectification.
 
-The resulting algorithm is the stochastic Anderson mixing (SAM). We also give a procedure to ensure the current searching direction is a descent direction.
+The resulting algorithm is the stochastic Anderson mixing (SAM). We also provide a procedure to ensure the current searching direction is a descent direction.
 
-With these modification, we establish the convergence theory of SAM, including the almost sure convergence to stationary points and the worst-case iteration complexity. Moreover, the complexity
-bound can be improved to $$O(1/\epsilon^{2})$$ when randomly choosing an iterate as the output.
+With these modification, we establish the convergence theory of SAM, including the almost sure convergence to stationary points and the worst-case iteration complexity. Moreover, the complexity bound can be improved to $$O(1/\epsilon^{2})$$ when randomly choosing an iterate as the output.
 
 ## Enhancement of Anderson mixing
 
@@ -60,7 +59,7 @@ For training a simple convolutional neural network (CNN) on MNIST dataset with l
 We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the superiority of our method.
 
 ### PTB
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=450></div>
 We also applied our method to training a 3-layer LSTM on PTB. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
