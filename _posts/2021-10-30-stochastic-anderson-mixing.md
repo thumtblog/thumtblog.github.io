@@ -32,7 +32,7 @@ We first reformulate Anderson mixing as a two-step procedure: (i) Projection ste
 
 (1) Damped projection. Motivated by damped Newton's method, we introduce damping to stabilize the projection step.
 
-(2) Adaptive regularization. The step size calculated by the projection step may be too large, which leads to the overshooting problem. We introduce an adaptive regularization term to the least-squares problem in the projection step as rectification.
+(2) Adaptive regularization. The step size calculated by the projection step may be too large, which leads to the overshooting problem. We introduce an adaptive regularization term in the projection step as rectification.
 
 The resulting algorithm is the stochastic Anderson mixing (SAM). We also give a procedure to ensure the current searching direction is a descent direction.
 
