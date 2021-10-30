@@ -52,7 +52,7 @@ We apply the new method and its enhanced version to train neural networks.
 
 ### MNIST
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_1.png" width=450></div>
-For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, our method (AdaSAM) can significantly accelerate first-order methods. 
+For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, our method (AdaSAM) achieves significant acceleration. 
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_2.png" width=450></div>
 The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. 
 <div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn_3.png" width=450></div>
