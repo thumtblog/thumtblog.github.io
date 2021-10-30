@@ -32,7 +32,7 @@ We first reformulate Anderson mixing as a two-step procedure: (i) Projection ste
 
 (1) Damped projection. Motivated by damped Newton's method, we introduce damping to stabilize the projection step.
 
-(2) Adaptive regularization. Since the stepsize calculated by the projection step may be too large that causes the intermediate iterate overshoot the trust region, we introduce an adaptive regularization term to the least-squares problem in the projection step.
+(2) Adaptive regularization. The step size calculated by the projection step may be too large, which leads to the overshooting problem. We introduce an adaptive regularization term to the least-squares problem in the projection step as rectification.
 
 The resulting algorithm is the stochastic Anderson mixing (SAM). We also give a procedure to ensure the current searching direction is a descent direction.
 
@@ -52,16 +52,16 @@ We introduce two techniques to further enhance SAM:
 We apply the new method and its enhanced version to train neural networks.
 
 ### MNIST
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.png" width=900></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cnn.png" width=1000></div>
 For training a simple convolutional neural network (CNN) on MNIST dataset with large batch sizes, out method (AdaSAM) can significantly accelerate first-order methods. The variance reduced extension (AdaSAM-VR) can achieve a lower training loss. The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge faster to an acceptable loss.
 
 ### CIFAR
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=750></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_cifar.png" width=900></div>
 We trained ResNet, WideResNet, ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the better test performance of our method.
 
 ### PTB
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=750></div>
-We also applied our method to language model task. The results show that our method (pAdaSAM) also outperforms other optimizers.
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=900></div>
+We also applied our method to training a 3-layer LSTM on the PTB language model task. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
 
