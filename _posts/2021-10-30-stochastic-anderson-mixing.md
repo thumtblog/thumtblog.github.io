@@ -63,7 +63,7 @@ The preconditioned versions (RMSprop-AdaSAM and Adagrad-AdaSAM) also converge fa
 We trained ResNet, WideResNet (abbreviated as WResNet), ResNeXt, and DenseNet on CIFAR10 and CIFAR100. The results demonstrate the superiority of our method.
 
 ### PTB
-<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=450></div>
+<div align="center"><img src="{{ site.url }}/images/stochastic-anderson-mixing/sam_ptb.png" width=470></div>
 We also applied our method to training a 3-layer LSTM on PTB. The results show that our method (pAdaSAM) also outperforms other optimizers.
 
 ## Conclusion
