@@ -2,7 +2,7 @@
 layout:     post
 author:     "Fuchao Wei"
 title:      "A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications"
-date:       2022-3-20 12:00:00
+date:       2022-03-20 12:00:00
 summary:    We develop a novel class of short-term recurrence Anderson mixing methods and validate its effectiveness in several applications including solving fixed-point problems and training neural networks.
 image:      "/images/short-term-recurrence-anderson-mixing/convection-diffusion.png"
 ---
