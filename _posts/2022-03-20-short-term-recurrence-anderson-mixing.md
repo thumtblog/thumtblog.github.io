@@ -64,7 +64,7 @@ We report the results of the tests on CIFAR here. The numerical results demonstr
 Here, we give a discussion about the implementation of our methods. 
 
 <div align="center"><img src="{{ site.url }}/images/short-term-recurrence-anderson-mixing/algorithm.png" width=700></div>
-Algorithm 3 describes the details of the RST-AM. When setting $$\delta_k^{(1)} = 0$$, $$delta_k^{(2)} = 0$$ and $$\alpha_k = 1$$, it is reduced to the ST-AM/MST-AM method. Note that we need to use two matrices $$P, Q \in \mathbb{R}^{d\times 2}$$ to store $$P_k$$ and $$Q_k$$ during the iterations. So this additional memory cost of RST-AM compared with SGD is $4d$. For the stochastic Anderson mixing, this cost is $2md$, where $m=10$ in the experiments. 
+Algorithm 3 describes the details of the RST-AM. When setting $$\delta_k^{(1)} = 0$$, $$\delta_k^{(2)} = 0$$ and $$\alpha_k = 1$$, it is reduced to the ST-AM/MST-AM method. Note that we need to use two matrices $$P, Q \in \mathbb{R}^{d\times 2}$$ to store $$P_k$$ and $$Q_k$$ during the iterations. So this additional memory cost of RST-AM compared with SGD is $$4d$$. For the stochastic Anderson mixing, this cost is $2md$, where $m=10$ in the experiments. 
 
 The choices of $$\delta_k^{(1)}$$ and $$\delta_k^{(2)}$$ are 
 
