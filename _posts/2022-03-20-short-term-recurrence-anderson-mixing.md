@@ -68,9 +68,9 @@ Algorithm 3 describes the details of the RST-AM. When setting $$\delta_k^{(1)} =
 
 The choices of $$\delta_k^{(1)}$$ and $$\delta_k^{(2)}$$ are 
 
-$$\delta_k^{(1)} = \frac{c_1\|r_k\|_2^2}{\|Delta x_{k-1}\|_2^2+\epsilon_0}, \delta_k^{(2)} = \max\{ \frac{c_2\|r_k\|_2^2}{\|p_k\|_2^2+\epsilon_0}, C\beta_k^{-2}\}$$
+$$\delta_k^{(1)} = \frac{c_1\|r_k\|_2^2}{\|\delta x_{k-1}\|_2^2+\epsilon_0}, \delta_k^{(2)} = \max\{ \frac{c_2\|r_k\|_2^2}{\|p_k\|_2^2+\epsilon_0}, C\beta_k^{-2}\}$$
 
-, where $$c_1 = 1$$, $$c_2 = 1\times 10^{-7}$$, $$\epsilon_0 = 1\times 10^{-8}$$, and $$C=0$$ in our implementation. We found that only $$c_1$$ and $$c_2$$ need to be carefully tuned in the experiments. Also, the setting that $$c_1 = 1$$, $$c_2 = 1\times 10^{-7}$$ is quite robust in all of our tests, so this default setting works well. The Line 10 is to guarantee the searching direction is a descent function. In practice, we check $$(x_{k+1}-x_k)^\mathrm{T}r_k$$ as a simplification. The $$\alpha_k$$ and $$\beta_k$$ are similar to the learning rate in SGD. Hence, the learning rate schedule directly acts on $$\alpha_k$$ and $$\beta_k$$.
+where $$c_1 = 1$$, $$c_2 = 1\times 10^{-7}$$, $$\epsilon_0 = 1\times 10^{-8}$$, and $$C=0$$ in our implementation. We found that only $$c_1$$ and $$c_2$$ need to be carefully tuned in the experiments. Also, the setting that $$c_1 = 1$$, $$c_2 = 1\times 10^{-7}$$ is quite robust in all of our tests, so this default setting works well. The Line 10 is to guarantee the searching direction is a descent function. In practice, we check $$(x_{k+1}-x_k)^\mathrm{T}r_k$$ as a simplification. The $$\alpha_k$$ and $$\beta_k$$ are similar to the learning rate in SGD. Hence, the learning rate schedule directly acts on $$\alpha_k$$ and $$\beta_k$$.
 
 ## Conclusion
 
