@@ -2,7 +2,7 @@
 layout:     post
 author:     "Zonghan Yang"
 title:      "On Robust Prefix-Tuning for Text Classification"
-date:       2022-04-06 12:00:00
+date:       2022-04-05 12:00:00
 summary:    Prefix-tuning lacks robustness, while current defense methods will hamper the modularity of the prefixes. We tune an additional prefix during inference to steer correct activation of the pretrained LM, which significantly improves the robustness.
 image:      "/images/robust-prefix-tuning/figure-1-static.png"
 ---
