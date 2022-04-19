@@ -7,7 +7,7 @@ summary:    Prefix-tuning lacks robustness, while current defense methods will h
 image:      "/images/robust-prefix-tuning/figure-1-static.png"
 ---
 
-Prefix-tuning ([Li & Liang, 2021](https://arxiv.org/abs/2101.00190)) is going viral. Instead of finetuning the entire large-scale language model (LM), it is demonstrated that all you need is a prefix when adapting to a certain downstream task. Should I apologize for abusing the "all you need is XXX" pattern, but there's indeed many merits in it: more **expressive** than discrete prompts (which is enabled by continuous optimization), **lightweight** compared with finetuning (near 1000x fewer parameters to be updated), as well as **modular** (one prefix one task). Without a doubt, prefix-tuning will motivate us to consider more about adapting tasks to the pretrained LMs in this era of parameter-efficient finetuning ([Liu et al., 2021](https://arxiv.org/abs/2107.13586); [Ding et al., 2022](https://arxiv.org/abs/2203.06904)).
+Prefix-tuning ([Li & Liang, 2021](https://arxiv.org/abs/2101.00190)) is going viral. Instead of finetuning the entire large-scale language model (LM), it is demonstrated that you just need to tune a prefix when adapting to a certain downstream task. There are indeed many merits: more **expressive** than discrete prompts (which is enabled by continuous optimization), **lightweight** compared with finetuning (near 1000x fewer parameters to be updated), as well as **modular** (one prefix one task). Without a doubt, prefix-tuning will motivate us to consider more about adapting tasks to the pretrained LMs in this era of parameter-efficient finetuning ([Liu et al., 2021](https://arxiv.org/abs/2107.13586); [Ding et al., 2022](https://arxiv.org/abs/2203.06904)).
 
 We experimented with prefix-tuning on text classification tasks. Despite all the merits in prefix-tuning, we found it lacking in robustness. It's easy to fool the prefix by manipulating the inputs (see an example below). In hindsight, perhaps we shouldn't be surprised by such phenomenon ([Ilyas et al., 2019](https://arxiv.org/abs/1905.02175)) - Defending against adversarial attacks for prefix-tuning is what we are gonna do now, as we want parameter-efficient finetuning techniques to be robust.
 
@@ -75,11 +75,11 @@ Take the sentence from SST-2 development set as an example. The original input i
 
 What about the Universal Adversarial Trigger attack?
 
-<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/ignoring-distraction.png" width=650></div>
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/ignore-distraction.png" width=650></div>
 
-Take another example from SST-2 dev set. The original input is *it 's just filler .* The adversarial trigger is *lifts mates who*. This time, we calculate token importance based on the attention map for more reliable explanations. According to the middle figure, the LM attaches much importance to the trigger tokens, which results in mistaken prediction. With the robust prefix, it is shown that the importance is reallocated to the essential token *filler*. As a result, the robust prefix helps **ignore the distraction** under UAT attack.
+Take another example from SST-2 dev set. The original input is *it 's just filler .* The adversarial trigger is *lifts mates who*. This time, we calculate a type of token importance based on the attention map for more reliable explanations (as suggested in previous work; check our [paper](https://openreview.net/forum?id=eBCmOocUejf) for details). According to the middle figure, the LM attaches much importance to the trigger tokens, which results in mistaken prediction. With the robust prefix, it is shown that the importance is reallocated to the essential token *filler*. As a result, the robust prefix helps **ignore the distraction** under UAT attack.
 
-We have also conducted quantitative analysis to show these two findings are statistically significant. Again, check our paper for details :) 
+We have also conducted quantitative analysis to show these two findings are statistically significant. Again, check our [paper](https://openreview.net/forum?id=eBCmOocUejf) for details :) 
 
 ## Takeaway Message
 
