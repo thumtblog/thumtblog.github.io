@@ -33,7 +33,7 @@ To answer this question, we first observe how prefix-tuning steers a GPT-style L
 
 Causal LMs cast the text classification problem as label generation. When classifying, the LM generates the predicted label token at the output position (with a special token \[ANS\] as input) after autoregressively processing all tokens in the sentence. Now focus on the output position: while the input token is the same (\[ANS\]), the output prediction token differs according to different contexts. 
 
-<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/observation-bad.png" width=600></div>
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/observation-bad.png" width=500></div>
 
 To be more specific, it's the affected layerwise activation of the LM that results in different model bahaviour at the output position. As a result, we might want to rectify the erroneous activation in case the model is fooled.
 
@@ -65,8 +65,21 @@ As you can find in the left figure, adversarial prefix-tuning achieves slightly 
 
 ## Behavior Analysis
 
-The summed prefix $$P_\theta + P'_\Psi$$ steers the correct activation of the LM, which dramatically improves the robustness of prefix-tuning. Compared with the original prefix $$P_\theta$$, how does the robust prefix steer the LM?
+The summed prefix $$P_\theta + P'_\Psi$$ steers the correct activation of the LM, which dramatically improves the robustness of prefix-tuning. Compared with the original prefix $$P_\theta$$, how does the robust prefix steer the LM? 
 
+By visualizing the attention map in the top layer, we find that the robust prefix **averages the attention** under in-sentence attacks. 
+
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/average-attention.png" width=600></div>
+
+Take the sentence from SST-2 development set as an example. The original input is *one from the heart .* Under the TextBugger attack, the input is perturbed into *One from te h art .* and the attention map is perplexed. With the robust prefix, the attention is averaged for each token. As a result, the robust prefix have steered the top layer of the LM to behave like a continous Bag of Words (cBoW) model. Roughly speaking, we can infer that the averaged attention as leads to equal contribution of each token in the input to the final prediction. In this way, the LM will not concentrate on some malicious perturbed tokens (e.g., the *te* in the middle figure). This is, however, only a less rigorous interpretation as attention can be not that reliable to be an explanation. But anyway, the attention in the top layer of the LM becomes averaged with our robust prefix.
+
+What about the Universal Adversarial Trigger attack?
+
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/ignoring-distraction.png" width=650></div>
+
+Take another example from SST-2 dev set. The original input is *it 's just filler .* The adversarial trigger is *lifts mates who*. This time, we calculate token importance based on the attention map for more reliable explanations. According to the middle figure, the LM attaches much importance to the trigger tokens, which results in mistaken prediction. With the robust prefix, it is shown that the importance is reallocated to the essential token *filler*. As a result, the robust prefix helps **ignore the distraction** under UAT attack.
+
+We have also conducted quantitative analysis to show these two findings are statistically significant. Again, check our paper for details :) 
 
 ## Takeaway Message
 
