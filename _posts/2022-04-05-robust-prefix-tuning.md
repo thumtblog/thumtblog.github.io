@@ -33,7 +33,7 @@ To answer this question, we first observe how prefix-tuning steers a GPT-style L
 
 Causal LMs cast the text classification problem as label generation. When classifying, the LM generates the predicted label token at the output position (with a special token \[ANS\] as input) after autoregressively processing all tokens in the sentence. Now focus on the output position: while the input token is the same (\[ANS\]), the output prediction token differs according to different contexts. 
 
-<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/observation-bad.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/observation-bad.png" width=550></div>
 
 To be more specific, it's the affected layerwise activation of the LM that results in different model bahaviour at the output position. As a result, we might want to rectify the erroneous activation in case the model is fooled.
 
@@ -42,7 +42,7 @@ So how do we rectify the activation? Recall that prefix-tuning steers the activa
 Now all we need is the additional prefix for robustness: no need to modify the pretrained LM, which preserves the parameter efficiency. To tune the additional prefix $$P'_\Psi$$, we assume that all the correct activations at layer $$j$$ lie on a manifold $$\mathcal{M}^{(j)}$$, and propose to minimize the orthogonal component of an erroneous activation. Our method is illustrated as follows:
 
 <br>
-<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/figure-1-static.png" width=700></div>
+<div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/figure-1.gif" width=700></div>
 <br>
 
 We construct the canonical manifold by PCA to characterize the layerwise activation of the correctly-classified inputs. For the $$j$$-th layer, we obtain a layerwise linear projection matrix $$Q^{(j)}$$. When prompted with $$P_\theta + P'_\Psi$$ (with $$P'_\Psi$$ initialized as $$\mathbf{0}$$), the $$j$$-th layer activation at the output position $$o$$ is $$h_{o}^{(j)}$$, and
