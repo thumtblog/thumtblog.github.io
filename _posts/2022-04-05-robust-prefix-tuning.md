@@ -55,7 +55,7 @@ We implement both standard and adversarial training to obtain the original prefi
 
 <div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/main-results.png" width=700></div>
 
-It is also noted that standard prefix-tuning, when equipped with the robust prefix, outperforms adversarial prefix-tuning without robust prefix in terms of robustness (right bar in the left figure v.s. orange bar in the right figure). This suggests that our robust prefix-tuning might be a better solution compared with adversarial training. We are further convinced of this when comparing standard and adversarial prefix-tuning:
+See more results in our [paper](https://openreview.net/forum?id=eBCmOocUejf). It is also noted that standard prefix-tuning, when equipped with the robust prefix, outperforms adversarial prefix-tuning without robust prefix in terms of robustness (right bar in the left figure v.s. orange bar in the right figure). This suggests that our robust prefix-tuning might be a better solution compared with adversarial training. We are further convinced of this when comparing standard and adversarial prefix-tuning:
 
 <div align="center"><img src="{{ site.url }}/images/robust-prefix-tuning/epoch-time-comparison.png" width=700></div>
 
