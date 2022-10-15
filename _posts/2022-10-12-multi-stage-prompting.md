@@ -27,7 +27,7 @@ Machine translation (MT) is a challenging NLP task. While neural machine transla
 
 However, leveraging pre-trained LMs for translation tasks via prompting faces many challenges. The first challenge is learning. It is not trivial to find an appropriate prompt for a translation task. The second challenge is training objective discrepancy. The third challenge is architectural differences. Generative LMs such as GPTs use a decoder-only architecture, which is unidirectional and may be sub-optimal for encoding source sentences.
 
-<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/challenges.png" width=900></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/challenges.PNG" width=900></div>
 <div align="center">Figure 3: Challenages.</div>
 <br/>
 
@@ -61,7 +61,7 @@ Following prefix-tuning, we also reparametrize prompt vectors. Instead of using 
 
 We use mGPT, a multilingual version of GPT-2 for translation tasks for all our experiments. mGPT is trained on the mC4 dataset, which covers 101 languages. The model size of mGPT is about 560M parameters. We conduct experiments on three representative translation tasks: the WMT14 En-De translation task, the WMT16 Ro-En translation task, and the WMT20 En-Zh translation task. We compare our MSP with two prompting methods: prompt tuning and prefix tuning.
 
-<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/tab1.png" width=800></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/tab1.png" width=700></div>
 <div align="center">Table 1: Main results.</div>
 <br/>
 
