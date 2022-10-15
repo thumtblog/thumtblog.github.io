@@ -4,7 +4,7 @@ author:     "Zhixing Tan"
 title:      "Multi-Stage Prompting for Making Pre-trained Language Models Better Translators"
 date:       2022-10-12 12:00:00
 summary:    How can we leverage and improve prompt tuning techniques to faciliate pretrained LMs as a better translator? We answer this question in our ACL 2022 paper.
-image:      "/images/multi-stage-prompting/overview_cut.png"
+image:      "{{ site.url }}/images/multi-stage-prompting/overview_cut.png"
 ---
 
 In recent years, pre-trained language models (PLM) have shown tremendous success in natural language processing. By simply fine-tuning a pre-trained language model, the performance of many NLP tasks can be significantly improved.

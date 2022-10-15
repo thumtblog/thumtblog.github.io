@@ -4,7 +4,7 @@ author:     "Xiangzhe Kong"
 title:      "Molecule Generation by Principal Subgraph Mining and Assembling"
 date:       2022-10-01 12:00:00
 summary:    We proposed the notion of principal subgraph and designed a theoretically efficient two-step generation framework for the molecule generation task.
-image:      "/images/PSVAE/model.png"
+image:      "{{ site.url }}/images/PSVAE/model.png"
 ---
 
 This is a blog for our paper [Molecule Generation by Principal Subgraph Mining and Assembling](https://arxiv.org/abs/2106.15098) which is accepted by NeurIPS 2022. 
