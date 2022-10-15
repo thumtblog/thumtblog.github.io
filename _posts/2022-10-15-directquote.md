@@ -12,7 +12,7 @@ In this blog, I'll introduce our LREC 2022 [paper](https://aclanthology.org/2022
 ## What is a quotation anyway?
 
 <br>
-<div align="center"><img src="{{ site.url }}/images/directquote/1.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/directquote/1.png" width=750></div>
 <br>
 
 As shown in the figure above, A **quotation** is a general notion that covers different kinds of speech, thought, and writing in text. It is a prominent linguistic device for expressing opinions, statements, and assessments attributed to the speaker. Concretely, there are three types of quotations: direct quotations, indirect quotations and mixed quotations. Among all kinds of quotations, the entire content of the **direct quotation** is in quotation marks, which means that what the speaker said is transcribed verbatim. 
@@ -22,7 +22,7 @@ Direct quotations are of considerable sigificance among all types of quotations.
 Besides news writing, direct quotations are also actively  involved in various NLP tasks. Since direct quotations are high subjective opinions, cognitions and assertions, they are used in opinion mining and claim detection task  to discover opinions, sentiment analysis task to evaluate the author’s mood, fact check task to verify factual information, statement monitoring task to track others’ speech. Many websites apply these tasks. For example, NewsBrief is a website that automatically extracts and attributes quotations, detects events, and updates them in real-time. Another website, Politifact, tracks the statements of politicians for news fact-checking to reduce misinformation. ISideWith tracks political views on different topics to boost voter engagement and education. However, these systems rely heavily on costly and time-consuming human labor.
 
 <br>
-<div align="center"><img src="{{ site.url }}/images/directquote/2.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/directquote/2.png" width=750></div>
 <br>
 
 In general, as shown above, the above applications include two types of tasks related to quotations. The first task is called **quotation extraction** that refers to determining the span that represents the quotation in the document. The second task, **quotation attribution**, refers to determining the speaker of the quotation. It is one of the primary criteria for maintaining integrity in journalism as a primary rhetorical mechanism to promote the veracity and correctness of reporting.
@@ -31,16 +31,16 @@ In general, as shown above, the above applications include two types of tasks re
 
 ## Our solution
 
-To alleviate the above problems, we introduce a corpus of direct quotations called **DirectQuote**. To build the corpus, we continuously sample news from multiple news sources to keep the text distribution in the corpus consistent with that in actual applications. Based on the data, we select 19,706 paragraphs containing quotation marks, and annotate 10,279 quotations and corresponding speakers. When annotating speakers, we ensure that valid speakers should be linked to a person entity in a named entity library. Among them, simple patterns are removed to increase the diversity of the corpus. 
+To alleviate the above problems, we introduce a corpus of direct quotations called **DirectQuote**. To build the corpus, we continuously sample news from multiple news sources to keep the text distribution in the corpus consistent with that in real applications. We select 19,706 paragraphs containing quotation marks, and annotate 10,279 quotations and corresponding speakers. When annotating speakers, we ensure that valid speakers should be linked to a person entity in a named entity library. Among them, simple patterns are removed to increase the diversity of the corpus. 
 
 <br>
-<div align="center"><img src="{{ site.url }}/images/directquote/3.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/directquote/3.png" width=900></div>
 <br>
 
 This figure shows the flowchart of constructing the corpus. We hope that the quotations in the corpus are diverse and can be applied in various downstream tasks such as stance analysis and sentiment analysis. Therefore, we select representative and multiple news sources across the political spectrum, including 13 well-known online news media from five major English-speaking countries. After pre-processing, we build the **DirectQuote** corpus to apply neural methods on quotation extraction and quotation tasks.
 
 <br>
-<div align="center"><img src="{{ site.url }}/images/directquote/4.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/directquote/4.png" width=750></div>
 <br>
 
 Although the common rule-based method is fast and performs well in the cases of simple syntax, it cannot handle rare quotation patterns.
