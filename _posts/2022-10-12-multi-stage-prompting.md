@@ -10,7 +10,7 @@ image:      "/images/multi-stage-prompting/overview_cut.png"
 In recent years, pre-trained language models (PLM) have shown tremendous success in natural language processing. By simply fine-tuning a pre-trained language model, the performance of many NLP tasks can be significantly improved.
 
 <div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/lm.png" width=700></div>
-<div align="center"><font size=2>Source: <i>Han et al. Pre-trained Models: Past, Present and Future</i>.</font></div>
+<div align="center"><font size=3>Source: <i>Han et al. Pre-trained Models: Past, Present and Future</i>.</font></div>
 <br/>
 
 As the pre-trained LMs become more powerful, the model size of pre-trained LMs also becomes larger. For example, GPT-3 has 175B parameters. The huge model size makes the finetune paradigm impractical. Recently, prompting has emerged as an efficient way for applying pre-trained language models to downstream tasks. Prompting not only is parameter-efficient but is also modular, which opens the possibility of using a single LM to perform all NLP tasks.
@@ -61,19 +61,19 @@ Following prefix-tuning, we also reparametrize prompt vectors. Instead of using 
 
 We use mGPT, a multilingual version of GPT-2 for translation tasks for all our experiments. mGPT is trained on the mC4 dataset, which covers 101 languages. The model size of mGPT is about 560M parameters. We conduct experiments on three representative translation tasks: the WMT14 En-De translation task, the WMT16 Ro-En translation task, and the WMT20 En-Zh translation task. We compare our MSP with two prompting methods: prompt tuning and prefix tuning.
 
-<div align="center"><img src="images/multi-stage-prompting/tab1.png" width=800></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/tab1.png" width=800></div>
 <div align="center">Table 1: Main results.</div>
 <br/>
 
 From table 1, we can see that prompt tuning is the most parameter-efficient method, which introduces only 131K parameters during training for each translation task. However, it only achieves 9.4 BLEU points on average over the three translation tasks because mGPT is not a huge LM, and model capacity is a key ingredient for prompt tuning to succeed. Prefix-tuning achieves an average of 23.9 BLEU points over the three translation tasks. The MLP network used in prefix-tuning introduces about 26M parameters for each translation task during training. MSP achieves 28.0 BLEU points on average over the three translation directions. MSP introduces 19M parameters for each translation task during training. The results suggest that MSP is more effective in instructing pre-trained LMs to perform translation than prompt tuning and prefix-tuning.
 
-<div align="center"><img src="images/multi-stage-prompting/tab2.png" width=900></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/tab2.png" width=900></div>
 <div align="center">Table 2: Comparison with other LMs.</div>
 <br/>
 
 We compare mGPT with other LMs on the WMT20 En-Zh translation task in table 2. Except for mGPT, other LMs are based on the encoder-decoder architecture. Despite using a much smaller pre-trained LM with about 5% parameters of mT5-XXL, CPM-2, and Ernie 3.0, MSP achieves the best performance on the En-Zh translation task. Therefore, we show that MSP is an efficient and effective approach to steering pre-trained LMs to translation tasks.
 
-<div align="center"><img src="images/multi-stage-prompting/tab3.png" width=700></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/tab3.png" width=700></div>
 <div align="center">Table 3: Comparison with a multilingual transformer model.</div>
 <br/>
 
