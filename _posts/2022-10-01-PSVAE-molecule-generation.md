@@ -33,7 +33,7 @@ The definition might be a little tricky, but in naturally language the definitio
 
 ### How to Extract Principal Subgraphs
 
-We have defined the concept of *spatially intersects* beforehand. Similarly, we can define *sptially union* as follows: if two subgraphs $$\mathcal{S}$$ and $$\mathcal{S}'$$ appear in the same molecule, we call their *spatially union* subgraph as $$\mathcal{U=\mathcal{S}\bigcup\mathcal{S}}'$$, where the nodes of $$\mathcal{U}$$ are the union set of $$\tilde{\mathcal{V}}$$ and $$\tilde{\mathcal{V}}'$$, and its edges are the union of $$\tilde{\mathcal{E}}$$ and $$\tilde{\mathcal{E}}'$$ plus all edges connecting $$\mathcal{S}$$ and $$\mathcal{S}'$$. We call each subgraph that is put into the vocabulary as a *fragment* for clearer representation. We generate all fragments via the following stages:
+We have defined the concept of *spatially intersects* beforehand. Similarly, we can define *spatially union* as follows: if two subgraphs $$\mathcal{S}$$ and $$\mathcal{S}'$$ appear in the same molecule, we call their *spatially union* subgraph as $$\mathcal{U=\mathcal{S}\bigcup\mathcal{S}}'$$, where the nodes of $$\mathcal{U}$$ are the union set of $$\tilde{\mathcal{V}}$$ and $$\tilde{\mathcal{V}}'$$, and its edges are the union of $$\tilde{\mathcal{E}}$$ and $$\tilde{\mathcal{E}}'$$ plus all edges connecting $$\mathcal{S}$$ and $$\mathcal{S}'$$. We call each subgraph in the vocabulary as a *fragment* for clearer representation. We generate all fragments via the following stages:
 
 1. **Initialization**. We first decide the size of the vocabulary as $$N$$. The vocabulary $$\mathbb{V}$$ is initialized with all unique atoms (subgraph with one node). Namely, all atoms are included in the vocabulary.
 2. **Merge**. For every two neighboring fragments $$\mathcal{F}$$ and $$\mathcal{F}'$$ in the current vocabulary, we merge them by deriving the spatial union $$\mathcal{F}\bigcup\mathcal{F}'$$. Here, the neighboring fragments of a given fragment $$\mathcal{F}$$ in a molecule is defined as the ones that contain at least one first-order neighbor nodes of a certain node in $$\mathcal{F}$$. 
@@ -41,7 +41,13 @@ We have defined the concept of *spatially intersects* beforehand. Similarly, we 
 
 > ***"Each subgraph can be seen as a small molecule, therefore we can translate subgraphs into [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) to transform the graph matching problem into string matching problem."***
 
-Here we present an example of implementing the algorithm on a toy dataset of three molecules: $$\texttt{C=CC=C}$$, $$\texttt{CC=CC}$$, $$\texttt{C=CCC}$$.  At the **Intialization** stage, we simply define $$N=3$$, which means that we want to construct a vocabulary $$\mathbb{V}$$ of three subgraphs. Then all unique atoms in the dataset are included in $$\mathbb{V}$$, namely $$\mathbb{V} = \{\texttt{C}\}$$. We can see from figure (a) that each molecule is represented as a set of connected $$\texttt{C}$$. Next, we enter the **Merge** phase. It is obvious that all spatial unions in figure (a) include $$\texttt{CC}$$ and $$\texttt{C=C}$$. Then in the **Update** stage, by counting the frequencies of spatial unions in figure (a), we have $$c(\texttt{CC}) = 5$$ and $$c(\texttt{C=C}) = 4$$. Therefore we have the most frequent pattern "two $$\texttt{C}$$ connected by a single bond", namely $$\texttt{CC}$$, included in the vocabulary and merge all the patterns in the dataset. By doing this, we can see in figure (b) that all carbon pairs connected by a single bond is marked in red, which means the two carbons are merged into a single node of fragment. One exception occurs at the third molecule where the 3rd and 4th carbons are not merged. This is because the 3rd carbon is already merged into the same node with the 2nd carbon. It is also reasonable if the 2nd carbon is left alone instead of the 4th carbon. We actullay randomly select one pair to merge if such overlap happens. This might introduce some ambiguity into the algorithm, but we will prove later that our algorithm can tolerate such ambiguity to some extent.
+Here we present an example of implementing the algorithm on a toy dataset of three molecules: $$\texttt{C=CC=C}$$, $$\texttt{CC=CC}$$, $$\texttt{C=CCC}$$. 
+
+1. At the **Intialization** stage, we simply define $$N=3$$, which means that we want to construct a vocabulary $$\mathbb{V}$$ of three subgraphs. Then all unique atoms in the dataset are included in $$\mathbb{V}$$, namely $$\mathbb{V} = \{\texttt{C}\}$$. We can see from figure (a) that each molecule is represented as a set of connected $$\texttt{C}$$. 
+2. Next, we enter the **Merge** phase. It is obvious that all spatial unions in figure (a) include $$\texttt{CC}$$ and $$\texttt{C=C}$$. 
+3. Then in the **Update** stage, by counting the frequencies of spatial unions in figure (a), we have $$c(\texttt{CC}) = 5$$ and $$c(\texttt{C=C}) = 4$$.
+
+Therefore, we have the most frequent pattern "two $$\texttt{C}$$ connected by a single bond", namely $$\texttt{CC}$$, included in the vocabulary and merge all the patterns in the dataset. By doing this, we can see in Figure (b) that all carbon pairs connected by a single bond is marked in red, which means the two carbons are merged into a single node of fragment. One exception occurs at the third molecule where the 3rd and 4th carbons are not merged. This is because the 3rd carbon is already merged into the same node with the 2nd carbon. It is also reasonable if the 2nd carbon is left alone instead of the 4th carbon. We actullay randomly select one pair to merge if such overlap happens. This might introduce some ambiguity into the algorithm, but we will prove later that our algorithm can tolerate such ambiguity to some extent.
 
 <div align="center"><img src="/images/PSVAE/extract.png" style="zoom:50%"></div>
 
@@ -99,29 +105,9 @@ In real scenarios concerning molecule generation, we usually need to generate mo
 
 <div align="center"><img src="/images/PSVAE/prop_opt.png" style="zoom:50%"></div>
 
-Please refer to our paper for more experimental results and detailed descriptions.
+Check our [paper](https://arxiv.org/abs/2106.15098) for more experimental results and detailed analysis!
 
-## Analysis
-
-### Proper Size of Vocabulary
-
- A larger $$N$$ (i.e. larger steps before the algorithm ends) in the principal subgraph extraction process leads to an increase in the number of atoms in extracted fragments and a decrease in their frequency of occurrence, as illustrated in the 2nd and 3rd figure below. These two factors affect model performance in opposite ways. On the one hand, the entropy of the dataset decreases with more coarse-grained decomposition, which benefits model learning. On the other hand, the sparsity problem worsens as the frequency of fragments decreases, which hurts model learning. Intuitively, there must be an optimal point to balance these two factors. We propose a quantified method to balance entropy and sparsity. The entropy of the dataset given a set of fragments $$\mathbb{V}$$  is defined by the sum of the entropy of each fragment normalized by the average number of atoms:
-
-$$H_{\mathbb{V}} = - \frac{1}{n_\mathbb{V}}\sum_{\mathcal{F} \in \mathbb{V}} P(\mathcal{F})\log P(\mathcal{F}),$$
-
-where $$P(\mathcal{F})$$ is the relative frequency of fragment $$\mathcal{F}$$ in the dataset and $$n_{\mathbb{V}}$$ is the average number of atoms of fragments in $$\mathbb{V}$$. The sparsity of $$\mathbb{V}$$ is defined as the reciprocal of the average frequency of fragments $$f_{\mathbb{V}}$$ normalized by the size of the dataset $$M$$: $$S_{\mathbb{V}} = M / f_{\mathbb{V}}$$. Then the entropy - sparsity trade-off ($$T$$) can be expressed as: $$T_\mathbb{V} = H_\mathbb{V} + \gamma S_\mathbb{V}$$, where $$\gamma$$ balances the impacts of entropy and sparsity since the impacts vary across different tasks. We assume that $$T_\mathbb{V}$$ negatively correlates with downstream tasks. Given a task, we first sample several values of $$N$$ to calculate their values of $$T$$ and then compute the $$\gamma$$ that minimize the Pearson correlation coefficient between $$T$$ and the corresponding performance on the task. In this way, we can locate a proper $$N$$ given any downstream tasks without burdensome tuning on the parameter. For example, the optimal $$\gamma$$ of the PlogP optimization task produce a Pearson correlation lower than -0.9, indicating strong negative correlation. The curve of the trade-off is depicted in the first figure below, which shows the optimal $$N$$ is approximately within the range [200, 300]. We have actually run the experiments with $$N=100, 300, 500, 700$$ and found that $$N=300$$ gives the best results.
-
-<div align="center"><img src="/images/PSVAE/proper_size.png" style="zoom:100%"></div>
-
-### Correlations Between Principal Subgraphs and Properties
-
-We may also wonder whether there truely exists correlations between the extracted PS and molecular properties, and whether PS-VAE can discover and utilize them. To analyze this, we present the normalized distribution of generated fragments and Pearson correlation coefficient between the fragments and Penalized logP (PlogP) in the figure below:
-
-<div align="center"><img src="/images/PSVAE/corr.png" style="zoom:100%"></div>
-
-By saying "normalized distribution" we mean the frequencies of each fragment is divided by their frequencies in the dataset. Therefore, in non-optimization settings, it is expected that each fragment has a normalized frequency of 1 because our model is supposed to fit the distribution of the dataset. This is indeed observed in the figure, where the blue bins are approximately of the same height indicating a frequency of 1. Compared with the flat distribution under the non-optimization setting, the generated distribution shifts towards the fragments positively correlated with PlogP under the PlogP-optimization setting. The generation of fragments negatively correlated with PlogP is also suppressed. Therefore, we can draw the conclusion that correlations exist between fragments and PlogP, and our model can accurately discover and utilize these correlations.
-
-## Discussion
+## What's Next?
 
 Though we have conducted extensive experiments to validate the efficacy of principal subgraphs, they are still preliminary attempts. We think there are a lot more domains that can utilize principal subgraphs for enhancement, as well as more efforts to improve the extraction algorithm. For example, currently the subgraph-level decomposition of molecules are merely implemented on the nodes. If we can also upgrade the edges to subgraph-level, it is possible to upgrade all atom-level models to their subgraph-level counterparts with only replacement of the vocabulary. Further, domains like pretraining or property prediction on the molecules may also extract abundant information from the subgraph-level representations of molecules. To conclude, we think our work provides insights into the selection of subgraphs on molecular representations and can inspire further search in this direction.
 
