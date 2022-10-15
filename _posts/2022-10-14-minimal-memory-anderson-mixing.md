@@ -37,14 +37,14 @@ The Min-AM methods consist of the basic Min-AM, the restarted Min-AM, and the st
  
 The basic Min-AM stores a modified vector pair and introduces an additional projection step to the original update scheme of AM. It exploits the symmetry of the Hessian, and is essentially equivalent to conjugate gradient (CG) method and the full-memory Type-I AM (AM-I) in strongly convex quadratic optimization. 
 
-<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/quadratic.png" width=500></div> 
+<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/quadratic.png" width=750></div> 
 The numerical results conform to our theorem of the basic Min-AM. It also shows that Min-AM has better numerical stability than the full-memory AM-I. 
 
 ### The restarted Min-AM 
 
 For solving general nonlinear optimization problems, we introduce restarting conditions to the basic Min-AM and obtain the restarted Min-AM. The restarted Min-AM has definitely better convergence than GD in theory. 
 
-<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/logistic_regression.png" width=500></div> 
+<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/logistic_regression.png" width=750></div> 
 The tests of regularized logistic regression demonstrate the fast convergence of Min-AM. The figure shows the results on the madelon dataset. We find the restarted Min-AM is competitive and the eigenvalue estimates also roughly match the Ritz values computed by Lanczos algorithm (Ritz values can approximate the true eigenvalues).
 
 
@@ -52,12 +52,12 @@ The tests of regularized logistic regression demonstrate the fast convergence of
 
 To solve stochastic optimization, we introduce regularization and damping techniques to the basic Min-AM and obtain the stochastic Min-AM (sMin-AM) that has convergence guarantee in nonconvex stochastic optimization. We prove that sMin-AM can achieve the asymptotically optimal iteration complexity of the black-box stochastic first-order methods.
 
-<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/cifar_accuracy.png" width=500></div> 
-<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/cifar_cost.png" width=500></div> 
+<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/cifar_accuracy.png" width=750></div> 
+<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/cifar_cost.png" width=750></div> 
 The numerical results of training neural networks on CIFAR-10 and CIFAR-100 demonstrate that the  sMin-AM outperforms SGDM and Adam while being more memory-efficient than stochastic AM (SAM) (Wei et al., 2021) and short-term recurrence AM (ST-AM) (Wei et al., 2022). 
 
-<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/imagenet.png" width=500></div> 
-sMin-AM also performs well when training ResNet50 on ImageNet. It can be found that sMin-AM has faster training process and attains higher training accuracy and test accuracy than SGDM. For more results and analysis, check out our NeurIPS 2022 [paper](https://openreview.net/forum?id=ob8tk9Q_2tN) =)
+<div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/imagenet.png" width=750></div> 
+sMin-AM also performs well when training ResNet50 on ImageNet. It can be found that sMin-AM has faster training process and attains higher training accuracy and test accuracy than SGDM. For more, check out our NeurIPS 2022 [paper](https://openreview.net/forum?id=ob8tk9Q_2tN) =)
 
 - Also see the previous blogposts in this series!
 -- [A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/)
