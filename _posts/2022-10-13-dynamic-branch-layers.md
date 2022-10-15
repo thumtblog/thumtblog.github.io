@@ -54,7 +54,7 @@ We evaluate our proposed models on English-German (En-De) and Chinese-English (Z
 * Tiny setting. We set the hidden size of the model to 128. The filter size of feed-forward layers is set to 512.
 * Small setting. We set the hidden size of the model to 256. The filter size of feed-forward layers is set to 1024.
 
-<div align="center"><img src="{{ site.url }}/images/dynamic-branch-layers/results.PNG" width=600></div>
+<div align="center"><img src="{{ site.url }}/images/dynamic-branch-layers/results.PNG" width=550></div>
 <div align="center">Figure 5: Raspberry Pi 4 ARM CPU latency and BLEU comparisons with different models on the En-De translation task.</div>
 <br/>
 
