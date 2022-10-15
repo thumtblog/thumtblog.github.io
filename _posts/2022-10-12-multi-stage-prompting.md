@@ -7,33 +7,33 @@ summary:    How can we leverage and improve prompt tuning techniques to faciliat
 image:      "/images/multi-stage-prompting/overview_cut.png"
 ---
 
-In recent years, pre-trained language models (PLM) have shown tremendous success in natural language processing. By simply fine-tuning a pre-trained language model, the performance of many NLP tasks, such as dialogue systems, can be significantly improved.
+In recent years, pre-trained language models (PLM) have shown tremendous success in natural language processing. By simply fine-tuning a pre-trained language model, the performance of many NLP tasks can be significantly improved.
 
-<div align="center"><img src="images/multi-stage-prompting/lm.png" width=700></div>
-<div align="center">Source: <i>Han et al. Pre-trained Models: Past, Present and Future</i>.</div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/lm.png" width=700></div>
+<div align="center"><font size=2>Source: <i>Han et al. Pre-trained Models: Past, Present and Future</i>.</font></div>
 <br/>
 
 As the pre-trained LMs become more powerful, the model size of pre-trained LMs also becomes larger. For example, GPT-3 has 175B parameters. The huge model size makes the finetune paradigm impractical. Recently, prompting has emerged as an efficient way for applying pre-trained language models to downstream tasks. Prompting not only is parameter-efficient but is also modular, which opens the possibility of using a single LM to perform all NLP tasks.
 
-<div align="center"><img src="images/multi-stage-prompting/plm4mt.png" width=400></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/plm4mt.png" width=400></div>
 <div align="center">Figure 1: Using a PLM for machine translation.</div>
 <br/>
 
 Machine translation (MT) is a challenging NLP task. While neural machine translation is the current de facto approach for machine translation, using pre-trained language models and prompting to perform translation tasks is appealing. For example, we can easily support a new translation task at a low memory cost. Furthermore, besides translation, the LM can retrain its ability to perform other NLP tasks.
 
-<div align="center"><img src="images/multi-stage-prompting/plm4mmt.png" width=300></div>
-<div align="center">Figure 2: By simply providing a new prompt, a PLM can support a new translation task.</div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/plm4mmt.png" width=300></div>
+<div align="center">Figure 2: A PLM can support a new translation task just with a new prompt.</div>
 <br/>
 
 However, leveraging pre-trained LMs for translation tasks via prompting faces many challenges. The first challenge is learning. It is not trivial to find an appropriate prompt for a translation task. The second challenge is training objective discrepancy. The third challenge is architectural differences. Generative LMs such as GPTs use a decoder-only architecture, which is unidirectional and may be sub-optimal for encoding source sentences.
 
-<div align="center"><img src="images/multi-stage-prompting/challenges.png" width=900></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/challenges.png" width=900></div>
 <div align="center">Figure 3: Challenages.</div>
 <br/>
 
 To address these challenges, we propose multi-stage prompting in our recent ACL 2022 [paper](https://aclanthology.org/2022.acl-long.424.pdf). The basic idea behind MSP is that we hope a complex task can be divided into many consecutive stages. By providing independent prompts at different stages, we expect the LM can learn a “smooth transition” to translation tasks.
 
-<div align="center"><img src="images/multi-stage-prompting/overview.png" width=900></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/overview.png" width=900></div>
 <div align="center">Figure 4: Comparision between basic prompting and multi-stage prompting.</div>
 <br/>
 
@@ -41,21 +41,21 @@ To address these challenges, we propose multi-stage prompting in our recent ACL 
 
 In our work, we use continuous prompts instead of textual prompts, which consist of continuous vectors. Similar to prefix-tuning, prompt vectors are prepended to all attention layers. These prompts are learned through back-propagation. The objective for learning prompts is cross-entropy loss, which is identical to NMT training. Note that we only tune prompt vectors, the pre-trained LMs are not tuned.
 
-<div align="center"><img src="images/multi-stage-prompting/dcp.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/dcp.png" width=500></div>
 <div align="center">Figure 5: Deep continuous prompt.</div>
 <br/>
 
 We design a three-stage scheme for MT tasks, which consists of an encoding stage, a re-encoding stage, and a decoding stage.
 
-<div align="center"><img src="images/multi-stage-prompting/msp.gif" width=800></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/msp.gif" width=800></div>
 <div align="center">Figure 6: Multi-stage prompting.</div>
 <br/>
 
-In the encoding stage, the pre-trained LM encodes the source sentence into a sequence of activations by using an encoding stage prompt. In the re-encoding stage, the pre-trained LM produces fine-grained representations of the source sentence given past activations and a re-encoding stage prompt, allowing each representation to condition on all words. In the decoding stage, the LM predicts the probability of the target sentence given the refined source representations and a decoding stage prompt.
+In the encoding stage, the pre-trained LM encodes the source sentence into a sequence of activations with an encoding stage prompt. In the re-encoding stage, the pre-trained LM produces fine-grained representations of the source sentence given past activations and a re-encoding stage prompt, allowing each representation to condition on all words. In the decoding stage, the LM predicts the probability of the target sentence given the refined source representations and a decoding stage prompt.
 
 Following prefix-tuning, we also reparametrize prompt vectors. Instead of using MLPs, we introduce a simpler “scaled reparameterization”, which allows faster convergence. We introduce a tunable scalar so that the learning can be accelerated when the scalar value is larger than 1.0.
 
-<div align="center"><img src="images/multi-stage-prompting/reparam.png" width=300></div>
+<div align="center"><img src="{{ site.url }}/images/multi-stage-prompting/reparam.png" width=300></div>
 
 ## Experiments
 
