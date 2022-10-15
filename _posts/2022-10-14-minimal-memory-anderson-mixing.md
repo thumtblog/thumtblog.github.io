@@ -1,7 +1,7 @@
 --- 
 layout:     post 
 author:     "Fuchao Wei" 
-title:      "A Variant of Anderson mixing with minimal memory size" 
+title:      "A Variant of Anderson Mixing with Minimal Memory Size" 
 date:       2022-10-14 12:00:00 
 summary:    We develop a new variant of Anderson mixing that achieves minimal memory size and has promising results on deterministic optimization and training neural networks.
 image:      "/images/minimal-memory-anderson-mixing/imagenet-train-loss.png" 
