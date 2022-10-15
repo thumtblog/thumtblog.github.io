@@ -7,9 +7,9 @@ summary:    We develop a new variant of Anderson mixing that achieves minimal me
 image:      "/images/minimal-memory-anderson-mixing/imagenet-train-loss.png" 
 --- 
 
-> Previous blogposts in this series: [1](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/), [2](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/) 
+- Previous blogposts in this series: [1](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/), [2](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/) 
 
-Anderson mixing (AM) (Anderson, 1965) is a classical method that can accelerate fixed-point iterations by exploring the historical information stored in $m$ vector pairs, where $m$ is called memory size. AM has been widely used in scientific computing and has achieved great success for solving fixed-point problems. Since many optimization problems can be transformed to fixed-point problems, AM can also be used in optimization. 
+Anderson mixing (AM) (Anderson, 1965) is a classical method that can accelerate fixed-point iterations by exploring the historical information stored in $$m$$ vector pairs, where $$m$$ is called memory size. AM has been widely used in scientific computing and has achieved great success for solving fixed-point problems. Since many optimization problems can be transformed to fixed-point problems, AM can also be used in optimization. 
  
 Although AM is empirically superior than gradient descent method, there are several issues of applying AM to solve large-scale and high-dimensional optimization problems in a resource-limited machine. First, the superiority of AM in terms of convergence rate has not been justified. Second, the memory cost of AM can be prohibitive. Third, AM is unaware of the symmetry of Hessian matrices in optimization problems and the approximate Hessian matrix of AM is generally not symmetric. 
 
@@ -65,9 +65,9 @@ We develop a variant of Anderson mixing with minimal memory size (Min-AM) for so
 For further discussion, please contact: **Fuchao Wei** (*wfc16@mails.tsinghua.edu.cn*). 
 
 
-> See the previous blogposts in this series!
-> [A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/)
-> [Stochastic Anderson Mixing for Nonconvex Stochastic Optimization](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/)
+- See the previous blogposts in this series!
+-- [A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/)
+-- [Stochastic Anderson Mixing for Nonconvex Stochastic Optimization](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/)
 
 ## References 
 
