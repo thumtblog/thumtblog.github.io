@@ -2,7 +2,7 @@
 layout:     post
 author:     "Shuo Wang"
 title:      "Integrating Vectorized Lexical Constraints for Neural Machine Translation"
-date:       2022-10-16 12:00:00
+date:       2022-10-15 12:00:00
 summary:    We propose to integrate external lexical constraints for the Transformer model through additional attention prefixes to enable controllable neural machine translation.
 image:      "/images/vectorized-lexical-constraints/model_overview.png"
 ---
