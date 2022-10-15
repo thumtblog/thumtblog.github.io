@@ -39,7 +39,7 @@ We have defined the concept of *spatially intersects* beforehand. Similarly, we 
 2. **Merge**. For every two neighboring fragments $$\mathcal{F}$$ and $$\mathcal{F}'$$ in the current vocabulary, we merge them by deriving the spatial union $$\mathcal{F}\bigcup\mathcal{F}'$$. Here, the neighboring fragments of a given fragment $$\mathcal{F}$$ in a molecule is defined as the ones that contain at least one first-order neighbor nodes of a certain node in $$\mathcal{F}$$. 
 3. **Update**. We count the frequency of each identical merged subgraph in the last stage. We choose the most frequent one as a new fragment in the vocabulary $$\mathbb{V}$$. Then, we go back to the merge stage until the vocabulary size reaches the predefined number $$N$$.
 
-> ***"Each subgraph can be seen as a small molecule, therefore we can translate subgraphs into [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) to transform the graph matching problem into string matching problem."***
+Each subgraph can be seen as a small molecule, therefore we can translate subgraphs into [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) to transform the graph matching problem into string matching problem."
 
 Here we present an example of implementing the algorithm on a toy dataset of three molecules: $$\texttt{C=CC=C}$$, $$\texttt{CC=CC}$$, $$\texttt{C=CCC}$$. 
 
@@ -63,11 +63,11 @@ The proposed algorithm enjoys the following properties, which ensure its efficac
 - **Significance**: Each fragment $$\mathcal{F}$$ in $$\mathbb{V}$$ is a principal subgraph.
 - **Completeness**: For any principal subgraph $$\mathcal{S}$$ arising in the dataset, there always exists a fragment $$\mathcal{F}$$ in $$\mathbb{V}$$ satisfying $$\mathcal{S} \subseteq \mathcal{F}, c(\mathcal{S}) = c(\mathcal{F})$$, when $$\mathbb{V}$$ has collected all fragments with frequency no less than $$c(\mathcal{S})$$.
 
-These conclusions are interesting and valuable. Monotonicity ensures that the subgraphs with higher frequencies are always extracted before those with lower frequencies. This is important because subgraphs with higher frequencies are more likely to reflect the frequent patterns and should be included into the vocabulary earlier. Significance indicates that each extracted subgraph is a principal subgraph that basically represents the “largest” repetitive pattern in size within the data. Completeness means our algorithm is expressive enough to represent (at least contain) any potential principal subgraph. For proof of these conclusions, please refer to our paper.
+These conclusions are interesting and valuable. Monotonicity ensures that the subgraphs with higher frequencies are always extracted before those with lower frequencies. This is important because subgraphs with higher frequencies are more likely to reflect the frequent patterns and should be included into the vocabulary earlier. Significance indicates that each extracted subgraph is a principal subgraph that basically represents the “largest” repetitive pattern in size within the data. Completeness means our algorithm is expressive enough to represent (at least contain) any potential principal subgraph. For proof of these conclusions, please refer to our [paper](https://arxiv.org/abs/2106.15098).
 
-Let's take a look back at the example of toy dataset. Even if the previously mentioned ambiguity happened and the 3rd and 4th carbons are merged in the third molecule, the final vocabulary will include a fragment which equals to or contains $$\texttt{C=CC}$$, which is ensured by the **Completeness**. Specifically, in this case the $$\texttt{C=CC}$$ will still be extracted.
+Now let's take a look back at the exampled toy dataset. Even if the mentioned ambiguity happened and the 3rd and 4th carbons are merged in the third molecule, the final vocabulary will include a fragment which equals to or contains $$\texttt{C=CC}$$, which is ensured by the **Completeness**. Specifically, in this case, the $$\texttt{C=CC}$$ will still be extracted.
 
-We provide some PS from the vocabulary constructed from ZINC250K and visualize them below. We found the constructed vocabulary really captures patterns in the dataset.
+We provide some PS visualization from the vocabulary constructed from ZINC250K. We found the constructed vocabulary really captures patterns in the dataset.
 
 <div align="center"><img src="/images/PSVAE/ps.png" style="zoom:50%"></div>
 
@@ -90,10 +90,10 @@ Given a latent variable variable $$\mathbf{z}$$, we first utilize an autoregress
 ### Global Assembling of Subgraphs
 
 The generated fragment set can be seen as a disconnected molecular graph where bonds between the subgraphs are missing. We formalize bond completion as a link prediction task which is familiar to the GNN community. Specifically, we implement message passing on the atom-level incomplete graph. Then, given node $$v$$ and $$u$$ in two different subgraphs, we predict the bonc between the two atoms as follows:
-$$
-P(e_{uv}|\mathbf{z}) = H_\theta([\mathbf{h}_v;\mathbf{h}_u;\mathbf{z}])
-$$
-where $$H_\theta$$ is a 3-layer MLP with ReLU activation and $$\mathbf{h}_{u/v}$$ is the node embedding of $$u/v$$ after message passing. We add a special type "$$\langle \texttt{none} \rangle$$" to indicate there is no bond between the two atoms. During training, we use negative sampling to balance the ratio of none bond and other bonds. During inference, we first sort the predicted edge in descending order in terms of $$P(e_{uv})|\mathbf{z}$$, then we try to add them into the graph in turn. Those edges which will induce violation of valency rules will be dropped. Finally we find the maximal connected component as the final results.
+
+$$P(e_{uv}|\mathbf{z}) = H_\theta([\mathbf{h}_v;\mathbf{h}_u;\mathbf{z}]),$$
+
+where $$H_\theta$$ is a 3-layer MLP with ReLU activation and $$\mathbf{h}_{u/v}$$ is the node embedding of $$u/v$$ after message passing. We add a special type "$$\langle \texttt{none} \rangle$$" to indicate there is no bond between the two atoms. During training, we use negative sampling to balance the ratio of none bond and other bonds. During inference, we first sort the predicted edge in descending order in terms of $$P(e_{uv})|\mathbf{z}$$, then we try to add them into the graph in turn. The edges that induce violation of valency rules will be dropped. Finally, we use the maximal connected component as the final results.
 
 We visualize some generated molecules below:
 
