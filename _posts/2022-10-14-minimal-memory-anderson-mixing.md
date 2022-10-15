@@ -9,9 +9,12 @@ image:      "/images/minimal-memory-anderson-mixing/imagenet-train-loss.png"
 
 - Previous blogposts in this series: [1](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/), [2](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/) 
 
-Anderson mixing (AM) (Anderson, 1965) is a classical method that can accelerate fixed-point iterations by exploring the historical information stored in $$m$$ vector pairs, where $$m$$ is called memory size. AM has been widely used in scientific computing and has achieved great success for solving fixed-point problems. Since many optimization problems can be transformed to fixed-point problems, AM can also be used in optimization. 
+Anderson mixing (AM) (Anderson, 1965) is a classical method that can accelerate fixed-point iterations by exploring the historical information stored in $$m$$ vector pairs, where $$m$$ is called memory size. AM has been widely used in scientific computing and has achieved great success for solving fixed-point problems. Since many optimization problems can be casted as fixed-point problems, AM can also be used in optimization.
  
-Although AM is empirically superior than gradient descent method, there are several issues of applying AM to solve large-scale and high-dimensional optimization problems in a resource-limited machine. First, the superiority of AM in terms of convergence rate has not been justified. Second, the memory cost of AM can be prohibitive. Third, AM is unaware of the symmetry of Hessian matrices in optimization problems and the approximate Hessian matrix of AM is generally not symmetric. 
+Although AM is empirically superior than gradient descent method, there are several issues of applying AM to solve large-scale and high-dimensional optimization problems in a resource-limited machine: 
+- The superiority of AM in terms of convergence rate has not been justified;
+- The memory cost of AM can be prohibitive;
+- AM is unaware of the symmetry of Hessian matrices in optimization problems, and the approximate Hessian matrix of AM is generally not symmetric. 
 
 In our recent NeurIPS 2022 [paper](https://openreview.net/forum?id=ob8tk9Q_2tN), we address the aforementioned issues of AM by developing a variant of AM with minimal memory size (Min-AM), where only one additional modified vector pair need to be stored, namely the memory size is 1. Min-AM forms symmetric Hessian approximations and has definitely improved convergence over gradient descent (GD) method. We validate the correctness of the theory and the practical performance of Min-AM by solving several deterministic optimization and stochastic optimization problems.
 
@@ -54,7 +57,11 @@ To solve stochastic optimization, we introduce regularization and damping techni
 The numerical results of training neural networks on CIFAR-10 and CIFAR-100 demonstrate that the  sMin-AM outperforms SGDM and Adam while being more memory-efficient than stochastic AM (SAM) (Wei et al., 2021) and short-term recurrence AM (ST-AM) (Wei et al., 2022). 
 
 <div align="center"><img src="{{ site.url }}/images/minimal-memory-anderson-mixing/imagenet.png" width=500></div> 
-sMin-AM also performs well when training ResNet50 on ImageNet. It can be found that sMin-AM has faster training process and attains higher training accuracy and test accuracy than SGDM.
+sMin-AM also performs well when training ResNet50 on ImageNet. It can be found that sMin-AM has faster training process and attains higher training accuracy and test accuracy than SGDM. For more results and analysis, check out our NeurIPS 2022 [paper](https://openreview.net/forum?id=ob8tk9Q_2tN) =)
+
+- Also see the previous blogposts in this series!
+-- [A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/)
+-- [Stochastic Anderson Mixing for Nonconvex Stochastic Optimization](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/)
 
 ## Conclusion 
 
@@ -64,10 +71,6 @@ We develop a variant of Anderson mixing with minimal memory size (Min-AM) for so
 ## Contact 
 For further discussion, please contact: **Fuchao Wei** (*wfc16@mails.tsinghua.edu.cn*). 
 
-
-- See the previous blogposts in this series!
--- [A Class of Short-term Recurrence Anderson Mixing Methods and Their Applications](https://thumtblog.github.io/2022/03/20/short-term-recurrence-anderson-mixing/)
--- [Stochastic Anderson Mixing for Nonconvex Stochastic Optimization](https://thumtblog.github.io/2021/10/30/stochastic-anderson-mixing/)
 
 ## References 
 
