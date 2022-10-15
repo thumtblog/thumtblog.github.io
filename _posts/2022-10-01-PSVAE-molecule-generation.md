@@ -39,9 +39,7 @@ We have defined the concept of *spatially intersects* beforehand. Similarly, we 
 2. **Merge**. For every two neighboring fragments $$\mathcal{F}$$ and $$\mathcal{F}'$$ in the current vocabulary, we merge them by deriving the spatial union $$\mathcal{F}\bigcup\mathcal{F}'$$. Here, the neighboring fragments of a given fragment $$\mathcal{F}$$ in a molecule is defined as the ones that contain at least one first-order neighbor nodes of a certain node in $$\mathcal{F}$$. 
 3. **Update**. We count the frequency of each identical merged subgraph in the last stage. We choose the most frequent one as a new fragment in the vocabulary $$\mathbb{V}$$. Then, we go back to the merge stage until the vocabulary size reaches the predefined number $$N$$.
 
-Each subgraph can be seen as a small molecule, therefore we can translate subgraphs into [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) to transform the graph matching problem into string matching problem."
-
-Here we present an example of implementing the algorithm on a toy dataset of three molecules: $$\texttt{C=CC=C}$$, $$\texttt{CC=CC}$$, $$\texttt{C=CCC}$$. 
+Each subgraph can be seen as a small molecule, therefore we can translate subgraphs into [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) to transform the graph matching problem into string matching problem." Here we present an example of implementing the algorithm on a toy dataset of three molecules: $$\texttt{C=CC=C}$$, $$\texttt{CC=CC}$$, $$\texttt{C=CCC}$$. 
 
 1. At the **Intialization** stage, we simply define $$N=3$$, which means that we want to construct a vocabulary $$\mathbb{V}$$ of three subgraphs. Then all unique atoms in the dataset are included in $$\mathbb{V}$$, namely $$\mathbb{V} = \{\texttt{C}\}$$. We can see from figure (a) that each molecule is represented as a set of connected $$\texttt{C}$$. 
 2. Next, we enter the **Merge** phase. It is obvious that all spatial unions in figure (a) include $$\texttt{CC}$$ and $$\texttt{C=C}$$. 
