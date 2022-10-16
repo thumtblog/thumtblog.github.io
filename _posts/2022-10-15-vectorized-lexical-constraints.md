@@ -34,7 +34,7 @@ Since our approach only modifies the model architecture, our model can also empl
 
 ## What's Next ?
 
-Existing lexically constrained approaches can be roughly divided into three categories: constrained decoding, data augmentation, and architecture design. Although constrained decoding can guarantee the appearance of the constraints, its speed is significantly slower than vanilla beam search. Data augmentation and architecture design both do not significantly slow down the inference procedure, but these methods can not achieve 100% CSR. In [our recent work](https://arxiv.org/abs/2205.11255v1), we propose a template-based method that can achieve 100% CSR with a speed that is comparable with the vanilla beam search. We suggest to read this template-based approach for researchers that are interested in lexically constrained translation :)
+Existing lexically constrained approaches can be roughly divided into three categories: constrained decoding, data augmentation, and architecture design. Although constrained decoding can guarantee the appearance of the constraints, its speed is significantly slower than vanilla beam search. Data augmentation and architecture design both do not significantly slow down the inference procedure, but these methods can not achieve 100% CSR. In [our recent work](https://arxiv.org/abs/2205.11255v1), we propose a template-based method that can achieve 100% CSR with a speed that is comparable with the vanilla beam search. We suggest to read this template-based approach for researchers who are interested in lexically constrained translation :)
 
 For further discussion, please contact: **Shuo Wang** (*[w-s14@tsinghua.org.cn](mailto:w-s14%40tsinghua.org.cn)*).
 
