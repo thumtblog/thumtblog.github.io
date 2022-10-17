@@ -16,14 +16,14 @@ For a source-language sentence $\mathbf{x}$ and a set of constraints $\{\langle 
 
 ## Approach
 
-<div align="center"><img src="{{ site.url }}/images/vectorized-lexical-constraints/integrate_attn.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/vectorized-lexical-constraints/integrate_attn.png" width=750></div>
 
 As illustrated in the above figure, we map lexical constraints into a series of continuous vectors, which are then prepended before the original keys and values of the attention module. Specifically, the source-language constraints are prepended before the keys while the target-language constraints are prepended before the values. For instance, if we specify a constraint "Beatles -> 甲壳虫", then "Beatles" are firstly mapped into continuous vectors and then prepended to the attention keys, and similarly "甲壳虫" are vectorized and prepended to the attention values. We integrate the constraints to the self-attention modules in the encoder and the cross-attention modules in the decoder.
 
 Since some constraints contains more than more tokens at each side and the individual tokens are not always monotonically aligned, we need to preprocess the constraints before provide them to the attention modules. Specifically, we use a multi-head attention layer to align the bilingual constraints. Moreover, some [recent studies](https://aclanthology.org/D19-1448.pdf) find that the representation evolves from the first layer to the last layer inside the Transformer model. To this end, we use an independent projection module to adapt the constraints into the corresponding manifolds for each specific layer. We also use a pointer network to further encourage the appearance of the pre-specified constraints. Please refer to our [paper](https://aclanthology.org/2022.acl-long.487) for more details.
 
 ## Results
-<div align="center"><img src="{{ site.url }}/images/vectorized-lexical-constraints/result-1.png" width=500></div>
+<div align="center"><img src="{{ site.url }}/images/vectorized-lexical-constraints/result_1.png" width=750></div>
  
  The above table shows the experimental results of our method. We compare our approach with three representative baselines:
  * VDBA ([Hu et al., 2019](https://aclanthology.org/N19-1090)), which is an improved constrained decoding algorithm;
