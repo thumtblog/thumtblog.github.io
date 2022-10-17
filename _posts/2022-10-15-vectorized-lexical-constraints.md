@@ -12,7 +12,7 @@ Lexical translation error is an important kind of error that current neural mach
 We revisited each component of the Transformer model and found that the attention mechanism is like the model looking up a "dictionary", whose keys and values are both continuous vectors, whereas the human dictionaries consist of discrete keys and values. Therefore, we propose to add lexical constraints into the attention modules to guide the Transformer model in our ACL 2022 [paper](https://aclanthology.org/2022.acl-long.487).
 
 ## Problem Definition
-For a source-language sentence $\mathbf{x}$ and a set of constraints $\{\langle \mathbf{u}^{(n)}, \mathbf{v}^{(n)}\rangle\}_{n=1}^{N}$, we expect the lexically constrained translation system to translate each $\mathbf{u}^{(n)}$ into $\mathbf{v}^{(n)}$. In this work, we propose to vectorize $\{\langle \mathbf{u}^{(n)}, \mathbf{v}^{(n)}\rangle\}_{n=1}^{N}$ into continuous vectors and then integrate them into the Transformer model.
+For a source-language sentence $$\mathbf{x}$$ and a set of constraints $$\{\langle \mathbf{u}^{(n)}, \mathbf{v}^{(n)}\rangle\}_{n=1}^{N}$$, we expect the lexically constrained translation system to translate each $$\mathbf{u}^{(n)}$$ into $$\mathbf{v}^{(n)}$$. In this work, we propose to vectorize $$\{\langle \mathbf{u}^{(n)}, \mathbf{v}^{(n)}\rangle\}_{n=1}^{N}$$ into continuous vectors and then integrate them into the Transformer model.
 
 ## Approach
 
